@@ -2,7 +2,7 @@
 
 namespace Zelenin\Glicko2;
 
-final class Match
+final class Gamematch
 {
     /**
      * @var Player

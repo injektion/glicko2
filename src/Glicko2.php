@@ -24,26 +24,26 @@ final class Glicko2
      */
     public function calculateMatches(MatchCollection $matchCollection)
     {
-        foreach ($matchCollection->getMatches() as $match) {
-            $this->calculateMatch($match);
+        foreach ($matchCollection->getMatches() as $gameMatch) {
+            $this->calculateMatch($gameMatch);
         }
     }
 
     /**
-     * @param Match $match
+     * @param Gamematch $gameMatch
      */
-    public function calculateMatch(Match $match)
+    public function calculateMatch(Gamematch $gameMatch)
     {
-        $player1 = clone $match->getPlayer1();
-        $player2 = clone $match->getPlayer2();
+        $player1 = clone $gameMatch->getPlayer1();
+        $player2 = clone $gameMatch->getPlayer2();
 
-        $score = $match->getScore();
+        $score = $gameMatch->getScore();
 
         $calculationResult1 = $this->calculatePlayer($player1, $player2, $score);
         $calculationResult2 = $this->calculatePlayer($player2, $player1, (1 - $score));
 
-        $match->getPlayer1()->loadFromCalculationResult($calculationResult1);
-        $match->getPlayer2()->loadFromCalculationResult($calculationResult2);
+        $gameMatch->getPlayer1()->loadFromCalculationResult($calculationResult1);
+        $gameMatch->getPlayer2()->loadFromCalculationResult($calculationResult2);
     }
 
     /**

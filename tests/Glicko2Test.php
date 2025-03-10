@@ -2,24 +2,25 @@
 
 namespace Zelenin\Glicko2\Test;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Zelenin\Glicko2\Glicko2;
-use Zelenin\Glicko2\Match;
+use Zelenin\Glicko2\Gamematch;
 use Zelenin\Glicko2\MatchCollection;
 use Zelenin\Glicko2\Player;
 
-final class Glicko2Test extends PHPUnit_Framework_TestCase
+final class Glicko2Test extends TestCase
 {
     /**
      * @var Glicko2
      */
     private $glicko;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->glicko = new Glicko2();
         parent::setUp();
     }
+
 
     public function testDefaultPlayer()
     {
@@ -48,8 +49,8 @@ final class Glicko2Test extends PHPUnit_Framework_TestCase
         $player1 = new Player(1500, 200, 0.06);
         $player2 = new Player(1400, 30, 0.06);
 
-        $match = new Match($player1, $player2, 1, 0);
-        $this->glicko->calculateMatch($match);
+        $gameMatch = new Gamematch($player1, $player2, 1, 0);
+        $this->glicko->calculateMatch($gameMatch);
 
         $this->assertEquals(1563.564, $this->round($player1->getR()));
         $this->assertEquals(175.403, $this->round($player1->getRd()));
@@ -68,14 +69,14 @@ final class Glicko2Test extends PHPUnit_Framework_TestCase
         $player3 = clone $player1;
         $player4 = clone $player2;
 
-        $match = new Match($player1, $player2, 1, 0);
-        $this->glicko->calculateMatch($match);
-        $match = new Match($player1, $player2, 1, 0);
-        $this->glicko->calculateMatch($match);
+        $gameMatch = new Gamematch($player1, $player2, 1, 0);
+        $this->glicko->calculateMatch($gameMatch);
+        $gameMatch = new Gamematch($player1, $player2, 1, 0);
+        $this->glicko->calculateMatch($gameMatch);
 
         $matchCollection = new MatchCollection();
-        $matchCollection->addMatch(new Match($player3, $player4, 1, 0));
-        $matchCollection->addMatch(new Match($player3, $player4, 1, 0));
+        $matchCollection->addMatch(new Gamematch($player3, $player4, 1, 0));
+        $matchCollection->addMatch(new Gamematch($player3, $player4, 1, 0));
         $this->glicko->calculateMatches($matchCollection);
 
         $this->assertEquals($this->round($player1->getR()), $this->round($player3->getR()));

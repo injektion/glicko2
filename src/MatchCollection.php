@@ -18,11 +18,11 @@ final class MatchCollection
     }
 
     /**
-     * @param Match $match
+     * @param Gamematch $gameMatch
      */
-    public function addMatch(Match $match)
+    public function addMatch(Gamematch $gameMatch)
     {
-        $this->matches->append($match);
+        $this->matches->append($gameMatch);
     }
 
     /**

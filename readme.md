@@ -28,7 +28,7 @@ Create two players with current ratings:
 
 ```php
 use Zelenin\Glicko2\Glicko2;
-use Zelenin\Glicko2\Match;
+use Zelenin\Glicko2\Gamematch;
 use Zelenin\Glicko2\MatchCollection;
 use Zelenin\Glicko2\Player;
 
