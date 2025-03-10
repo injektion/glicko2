@@ -37,17 +37,17 @@ $glicko = new Glicko2();
 $player1 = new Player(1700, 250, 0.05);
 $player2 = new Player();
 
-$match = new Match($player1, $player2, 1, 0);
-$glicko->calculateMatch($match);
+$gameMatch = new Gamematch($player1, $player2, 1, 0);
+$glicko->calculateMatch($gameMatch);
 
-$match = new Match($player1, $player2, 3, 2);
-$glicko->calculateMatch($match);
+$gameMatch = new Gamematch($player1, $player2, 3, 2);
+$glicko->calculateMatch($gameMatch);
 
 // or
 
 $matchCollection = new MatchCollection();
-$matchCollection->addMatch(new Match($player1, $player2, 1, 0));
-$matchCollection->addMatch(new Match($player1, $player2, 3, 2));
+$matchCollection->addMatch(new Gamematch($player1, $player2, 1, 0));
+$matchCollection->addMatch(new Gamematch($player1, $player2, 3, 2));
 $glicko->calculateMatches($matchCollection);
 
 $newPlayer1R = $player1->getR();
