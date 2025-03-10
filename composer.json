@@ -1,5 +1,5 @@
 {
-    "name": "zelenin/glicko2",
+    "name": "injektion/glicko2",
     "description": "A PHP implementation of Glicko2 rating system",
     "type": "library",
     "keywords": [
@@ -8,7 +8,7 @@
         "rating",
         "ranking"
     ],
-    "homepage": "https://github.com/zelenin/glicko2",
+    "homepage": "https://github.com/injektion/glicko2",
     "license": "MIT",
     "authors": [
         {
@@ -18,8 +18,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/zelenin/glicko2/issues",
-        "source": "https://github.com/zelenin/glicko2"
+        "issues": "https://github.com/injektion/glicko2/issues",
+        "source": "https://github.com/injektion/glicko2"
     },
     "require": {
         "php": ">=5.4.0"
